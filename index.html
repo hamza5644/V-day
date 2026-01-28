@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Favorite Person 🎀</title>
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <audio id="audio1" loop><source src="assets/stage1.mp3" type="audio/mpeg"></audio>
+    <audio id="audio2" loop><source src="assets/stage2.mp3" type="audio/mpeg"></audio>
+    <audio id="audio3" loop><source src="assets/stage3.mp3" type="audio/mpeg"></audio>
+
+    <section id="page1" class="page active">
+        <h1>Will you be my Valentine? 🎀</h1>
+        <div class="btn-container">
+            <button class="btn" onclick="goToPage(2, 'audio1')">Yes! ✨</button>
+            <button id="noBtn" class="btn" onmouseover="moveNoButton()" ontouchstart="moveNoButton()">No
+</button>
+        </div>
+    </section>
+
+    <section id="page2" class="page">
+        <h1>Our Story 📖</h1>
+        <div class="story-box">
+            <h2>The Day We Met</h2>
+            <p>[Your Paragraph Here]</p>
+        </div>
+        <button class="btn" onclick="goToPage(3, 'audio2')">See our moments →</button>
+    </section>
+
+<section id="page3" class="page">
+    <h1>Captured Moments 📸</h1>
+    <div class="gallery-grid">
+            <div class="photo-card">
+        <img src="assets/eyes.jpeg" alt="Your Eyes" onclick="expandImage(this, 'Those Eyes...')">
+        <h3>Those Eyes...</h3>
+        <p>I could stare at them for hours...</p>
+                </div>
+        
+        <div class="photo-card">
+            <img src="assets/us5.jpeg" alt="Us Together" onclick="expandImage(this, 'Us')">
+            <h3>Us</h3>
+            <p>looks cute right?</p>
+        </div>
+
+        <div class="photo-card">
+            <img src="assets/us2.jpeg" alt="Us Too" onclick="expandImage(this, 'twins')">
+            <h3>twins</h3>
+            <p>Twining</p>
+
+        </div>
+    <button class="btn" onclick="goToPage(4, 'audio3')">One last thing... 💌</button>
+</section>
+
+<section id="page4" class="page">
+    <h1>For You 💌</h1>
+    <div class="card-wrap">
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+            <div class="flip-card-inner">
+                <div class="card-front">💝</div>
+                <div class="card-back"><p>You're the best thing that happened to me.</p></div>
+            </div>
+        </div>
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+            <div class="flip-card-inner">
+                <div class="card-front">🎀</div>
+                <div class="card-back"><p>I love our late night talks.</p></div>
+            </div>
+        </div>
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+            <div class="flip-card-inner">
+                <div class="card-front">🐱</div>
+                <div class="card-back"><p>Will you be mine forever?</p></div>
+            </div>
+        </div>
+    </div>
+    <h2 class="final-text">Happy Valentine's Day!</h2>
+    <h3>Just for Maryam, By Hamza</h3>
+</section>
+
+<div id="photoModal" class="modal" onclick="closeModal()">
+    <span class="close-modal">&times;</span>
+    <img class="modal-content" id="fullImage">
+    <div id="captionText"></div>
+</div>
+
+    <script src="script.js"></script>
+</body>
+</html>
