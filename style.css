@@ -25,30 +25,83 @@ body {
     overflow-x: hidden;
 }
 
-/* Center every page perfectly */
+/* --- LAYOUT FIX --- */
 .page {
     display: none;
     min-height: 100vh;
     width: 100%;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    align-items: center; /* Keeps horizontal center steady */
+    justify-content: center; /* Keeps vertical center steady */
     padding: 20px;
     text-align: center;
+    position: relative;
 }
 
 .page.active {
     display: flex;
 }
 
-/* Fix for Hello Kitty - Using a reliable PNG link */
-.decoration {
+/* --- THE CONTENT WRAPPER (This fixes the bug) --- */
+.content-wrap {
+    opacity: 0;
+    transform: translateY(30px);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Trigger animation only when parent is active */
+.page.active .content-wrap {
+    animation: fadeUp 0.8s ease-out forwards;
+}
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- SANRIO STICKER STYLE --- */
+.decoration, .decoration-right {
     position: fixed;
-    width: 80px;
-    bottom: 20px;
-    left: 20px;
-    z-index: 1000;
-    filter: drop-shadow(2px 2px 5px rgba(0,0,0,0.1));
+    width: clamp(80px, 20vw, 120px); /* Slightly larger for detail */
+    z-index: 9999;
+    pointer-events: none; /* Crucial: ensures she can click buttons "under" the sticker */
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.8)) drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.1));
+    transition: all 0.3s ease;
+}
+
+/* Specific positions */
+.decoration { 
+    bottom: 10px; 
+    left: 10px; 
+    transform: rotate(-5deg); /* Gives it a scrapbook feel */
+}
+
+.decoration-right { 
+    top: 10px; 
+    right: 10px; 
+    transform: rotate(10deg); 
+}
+
+/* Subtle floating animation to make them feel alive */
+@keyframes float {
+    0% { transform: translateY(0px) rotate(-5deg); }
+    50% { transform: translateY(-10px) rotate(-2deg); }
+    100% { transform: translateY(0px) rotate(-5deg); }
+}
+
+/* Apply the floating animation to BOTH stickers */
+.decoration, .decoration-right {
+    animation: float 4s ease-in-out infinite;
+}
+
+/* Optional: If you want them to bob at different times so it looks more natural */
+.decoration-right {
+    animation-delay: 1s; 
 }
 
 h1 {
@@ -291,3 +344,59 @@ h1 {
 .photo-card img:hover {
     filter: brightness(0.9);
 }
+
+/* --- GLOBAL SCROLL LOCK --- */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100vh;
+    /* Change 'hidden' to 'auto' so the JS can control it properly */
+    overflow-x: hidden; 
+}
+
+/* --- PAGE 1 SPECIFIC (No Scroll) --- */
+#page1 {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden; /* Fixes the "repeating/scrolling" issue */
+    position: fixed; /* Keeps it locked in place */
+    top: 0;
+    left: 0;
+}
+
+/* --- ALLOW SCROLLING ON OTHER PAGES --- */
+#page2, #page3, #page4 {
+    overflow-y: auto; /* Allows her to scroll through your story and photos */
+    -webkit-overflow-scrolling: touch; /* Smooth scroll for iPhone */
+}
+
+/* --- HEART TRAIL --- */
+/* Lightweight, hardware-friendly heart emoji trail. Respects reduced-motion. */
+.heart {
+    position: fixed;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    will-change: transform, opacity;
+    animation: heart-rise 1200ms cubic-bezier(.2,.8,.2,1) forwards;
+    z-index: 1500;
+    opacity: 1;
+}
+
+@keyframes heart-rise {
+    0% {
+        transform: translate(-50%, -50%) translateY(0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) translateY(-90px) scale(1.35);
+        opacity: 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .heart { animation: none; opacity: 0.9; transform: translate(-50%, -50%) scale(1); }
+}
+
+
