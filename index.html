@@ -4,11 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>For Meri Jaan 🎀</title>
-    
     <link rel="stylesheet" href="style.css">
-    
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
-
 </head>
 <body>
     <audio id="audio1" loop><source src="assets/stage1.mp3" type="audio/mpeg"></audio>
@@ -16,90 +13,95 @@
     <audio id="audio3" loop><source src="assets/stage3.mp3" type="audio/mpeg"></audio>
 
     <section id="page1" class="page active">
-        <h1>Will you be my Valentine? 🎀</h1>
-        <div class="btn-container">
-            <button class="btn" onclick="goToPage(2, 'audio1')">Yes! ✨</button>
-            <button id="noBtn" class="btn" onmouseover="moveNoButton()" ontouchstart="moveNoButton()">No
-</button>
+        <div class="content-wrap">
+            <h1>Will you be my Valentine? 🎀</h1>
+            <img src="assets/zazu-cat.gif" alt="Cute Cat" class="cute-cat">
+            <div class="btn-container">
+                <button class="btn" onclick="goToPage(2, 'audio1')">Yes🥰</button>
+                <button id="noBtn" class="btn" onmouseover="moveNoButton()" ontouchstart="moveNoButton()">No😒</button>
+            </div>
         </div>
     </section>
 
     <section id="page2" class="page">
-        <h1>Our Story 📖</h1>
-        <p>A digital diary for us</p>
-        <div class="story-box">
-            <h2>The Night We Met</h2>
-            <p>I still remember it like yesterday it was late at night it was supposed to be just supposed to be a random VC like always i'll listen to some songs and i'll leave but fate 
+        <div class="content-wrap">
+            <h1>Our Story 📖</h1>
+            <h2 style="color: #fa37bf; text-shadow: 1px 1px 2px rgba(0,0,0,0.2);">A digital diary for us</h2>
+            
+            <div class="story-box">
+                <strong>The Night We Met...</strong><br>
+                I still remember it like yesterday it was late at night it was supposed to be just supposed to be a random VC like always i'll listen to some songs and i'll leave but fate 
                 had other plans that night you joined the call and everything changed from that moment on i knew you were special the way we talked as if we had known each other forever
                 it felt so natural and right ever since that night we've talked daily shared our lives,dreams and fears and the way we met it was when we were'nt trying to find anyone
                 but i guess it was fate now here we are more than 2 months later so much in love. I still remember that night like yesterday, you're special to me meri jaan and even if there's 
-                no future to look forward for us i'll still try and even if it does'nt work i'll stay... i'll stay by you till the end, till fate does us apart.
-            </p>
+                no future to look forward for us i'll still try and even if it does'nt work i'll stay... i'll stay by you till the end, till fate does us apart
+            </div>
+            
+            <button class="btn" onclick="goToPage(3, 'audio2')">See our moments →</button>
         </div>
-        <button class="btn" onclick="goToPage(3, 'audio2')">See our moments →</button>
     </section>
 
-<section id="page3" class="page">
-    <h1>Our Gallery📸</h1>
-    <div class="gallery-grid">
-            <div class="photo-card">
-        <img src="assets/eyes.jpeg" alt="Your Eyes" onclick="expandImage(this, 'Those Eyes...')">
-        <h3>Those Eyes...</h3>
-        <p>I could stare at them for hours...</p>
+    <section id="page3" class="page">
+        <div class="content-wrap">
+            <h1>Our Gallery 📸</h1>
+            <div class="gallery-grid">
+                <div class="photo-card">
+                    <img src="assets/eyes.jpeg" alt="Your Eyes" onclick="expandImage(this, 'Those Eyes...')">
+                    <h3>Those Eyes...</h3>
+                    <p>I could stare at them for hours...</p>
                 </div>
-        
-        <div class="photo-card">
-            <img src="assets/us5.jpeg" alt="Us Together" onclick="expandImage(this, 'Us')">
-            <h3>Us</h3>
-            <p>looks cute right?</p>
-        </div>
-
-        <div class="photo-card">
-            <img src="assets/us2.jpeg" alt="Us Too" onclick="expandImage(this, 'twins')">
-            <h3>twins</h3>
-            <p>Twining</p>
-
-        </div>
-    <button class="btn" onclick="goToPage(4, 'audio3')">One last thing... 💌</button>
-</section>
-
-<section id="page4" class="page">
-    <h1>For You 💌</h1>
-    <div class="card-wrap">
-        <div class="flip-card" onclick="this.classList.toggle('flipped')">
-            <div class="flip-card-inner">
-                <div class="card-front">💝</div>
-                <div class="card-back"><p>I loved starting this new year with you my love.</p></div>
+                <div class="photo-card">
+                    <img src="assets/us5.jpeg" alt="Us Together" onclick="expandImage(this, 'Us')">
+                    <h3>Us</h3>
+                    <p>Looks cute right?</p>
+                </div>
+                <div class="photo-card">
+                    <img src="assets/us2.jpeg" alt="Us Too" onclick="expandImage(this, 'twins')">
+                    <h3>Twins</h3>
+                    <p>Twining</p>
+                </div>
             </div>
+            <button class="btn" onclick="goToPage(4, 'audio3')">One last thing... 💌</button>
         </div>
-        <div class="flip-card" onclick="this.classList.toggle('flipped')">
-            <div class="flip-card-inner">
-                <div class="card-front">🎀</div>
-                <div class="card-back"><p>I love our late night talks and our playlist it's close to me.</p></div>
+    </section>
+
+    <section id="page4" class="page">
+        <div class="content-wrap">
+            <h1>Solo per te</h1>
+            <div class="card-wrap">
+                <div class="flip-card" onclick="triggerBurst(this, '❤️')">
+                    <div class="flip-card-inner">
+                        <div class="card-front">💝</div>
+                        <div class="card-back"><p>I loved starting this new year with you my love and I wish to start the next with you too.</p></div>
+                    </div>
+                </div>
+                <div class="flip-card" onclick="triggerBurst(this, '🌸')">
+                    <div class="flip-card-inner">
+                        <div class="card-front">🎀</div>
+                        <div class="card-back"><p>I love our late night talks and our playlist it's very dear to me.</p></div>
+                    </div>
+                </div>
+                <div class="flip-card" onclick="triggerBurst(this, '💋')">
+                    <div class="flip-card-inner">
+                        <div class="card-front">🐱</div>
+                        <div class="card-back"><p>You're mine and even if one day you stop being mine... I'll remember you were once Meriyam.</p></div>
+                    </div>
+                </div>
             </div>
+            <h2 class="final-text">Happy Valentine's Day!</h2>
+            <p>Just for Maryam, By Hamza</p>
+            <p class="date-text">2/14/26</p> 
         </div>
-        <div class="flip-card" onclick="this.classList.toggle('flipped')">
-            <div class="flip-card-inner">
-                <div class="card-front">🐱</div>
-                <div class="card-back"><p>You're meriyam and even if one day you stop being meri i'll remember you were once meriyam not kisi or ki maryam...</p></div>
-            </div>
-        </div>
+    </section>
+
+    <div id="photoModal" class="modal" onclick="closeModal()">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="fullImage">
+        <div id="captionText"></div>
     </div>
-    <h2 class="final-text">Happy Valentine's Day!</h2>
-    <p>Just for Maryam, By Hamza</p>
-</section>
 
-<div id="photoModal" class="modal" onclick="closeModal()">
-    <span class="close-modal">&times;</span>
-    <img class="modal-content" id="fullImage">
-    <div id="captionText"></div>
-</div>
-
-<img src="assets/D2.png" class="decoration" alt="Hello Kitty">
-
-<img src="assets/D1.png" class="decoration-right" alt="Hello Kitty Heart">
+    <img src="assets/D1.png" class="decoration-right" alt="Hello Kitty Heart">
 
     <script src="script.js"></script>
 </body>
-
 </html>
